@@ -1,3 +1,7 @@
+export interface User {
+  username: string;
+  messagesSent: number;
+}
 
 export interface TeamStats {
   name: string;
