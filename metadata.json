@@ -1,0 +1,5 @@
+{
+  "name": "Football AI Predictor",
+  "description": "An AI-powered football match predictor and chat assistant. Input team stats to get match predictions or chat with a football expert AI for insights and analysis.",
+  "requestFramePermissions": []
+}
