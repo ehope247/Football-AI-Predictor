@@ -1,4 +1,3 @@
-
 import { GoogleGenAI, Type, Chat } from "@google/genai";
 import type { TeamStats, PredictionResult } from '../types';
 
@@ -68,7 +67,7 @@ export const createChatSession = (): Chat => {
   return ai.chats.create({
     model: 'gemini-2.5-flash',
     config: {
-      systemInstruction: "You are 'Footy AI', a friendly and knowledgeable football expert. You can discuss historical matches, player stats, team news, tactical analysis, and make fun predictions. Keep your tone engaging and conversational.",
+      systemInstruction: "You are 'Footy AI', a knowledgeable football expert. Your knowledge is strictly limited to football and other major sports. You must discuss historical matches, player stats, team news, and tactical analysis. If a user asks a question about a topic outside of sports, you must politely decline and state that your expertise is limited to the world of sports. Do not answer non-sports questions. Keep your tone engaging and conversational.",
     },
   });
 };

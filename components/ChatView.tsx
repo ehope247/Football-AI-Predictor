@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import type { Chat } from '@google/genai';
 import { createChatSession } from '../services/geminiService';
@@ -69,23 +68,23 @@ const ChatView: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-80px)] max-w-4xl mx-auto bg-slate-900">
+    <div className="flex flex-col h-[calc(100vh-80px)] bg-slate-900">
       <div className="flex-1 overflow-y-auto p-4 md:p-6 space-y-6">
         {messages.map((msg, index) => (
           <div key={index} className={`flex items-start gap-4 ${msg.role === 'user' ? 'justify-end' : ''}`}>
             {msg.role === 'model' && (
-              <div className="w-10 h-10 flex-shrink-0 bg-cyan-500/20 rounded-full flex items-center justify-center border-2 border-cyan-500">
+              <div className="w-10 h-10 flex-shrink-0 bg-gradient-to-br from-slate-700 to-slate-800 rounded-full flex items-center justify-center border-2 border-slate-600">
                 <BallIcon className="w-6 h-6 text-cyan-400" />
               </div>
             )}
             <div
-              className={`max-w-md md:max-w-lg p-4 rounded-2xl ${
+              className={`max-w-md md:max-w-lg p-4 rounded-2xl shadow-md ${
                 msg.role === 'user'
-                  ? 'bg-cyan-600 text-white rounded-br-none'
+                  ? 'bg-blue-600 text-white rounded-br-none'
                   : 'bg-slate-800 text-gray-200 rounded-bl-none'
               }`}
             >
-              <p className="whitespace-pre-wrap">{msg.content}{isLoading && msg.role === 'model' && index === messages.length -1 ? '...' : ''}</p>
+              <p className="whitespace-pre-wrap break-words">{msg.content}{isLoading && msg.role === 'model' && index === messages.length -1 ? '...' : ''}</p>
             </div>
           </div>
         ))}
@@ -94,7 +93,7 @@ const ChatView: React.FC = () => {
       </div>
 
       <div className="p-4 md:p-6 bg-slate-900 border-t border-slate-800">
-        <form onSubmit={handleSendMessage} className="flex items-center gap-3 bg-slate-800 rounded-full border border-slate-700 p-2 focus-within:ring-2 focus-within:ring-cyan-500 transition-shadow">
+        <form onSubmit={handleSendMessage} className="flex items-center gap-3 bg-slate-800 rounded-xl border border-slate-700 p-2 focus-within:ring-2 focus-within:ring-cyan-500 transition-shadow">
           <input
             type="text"
             value={input}
@@ -102,8 +101,9 @@ const ChatView: React.FC = () => {
             placeholder="Ask about a player, team, or match..."
             className="w-full bg-transparent text-white px-4 py-2 focus:outline-none disabled:opacity-50"
             disabled={isLoading}
+            aria-label="Chat input"
           />
-          <button type="submit" disabled={isLoading || !input.trim()} className="bg-cyan-600 text-white rounded-full p-3 hover:bg-cyan-500 disabled:bg-slate-600 disabled:cursor-not-allowed transition-colors">
+          <button type="submit" disabled={isLoading || !input.trim()} className="bg-blue-600 text-white rounded-full p-3 hover:bg-blue-500 disabled:bg-slate-600 disabled:cursor-not-allowed transition-colors flex-shrink-0" aria-label="Send message">
             <SendIcon className="w-5 h-5" />
           </button>
         </form>
