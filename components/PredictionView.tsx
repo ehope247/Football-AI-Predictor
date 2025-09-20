@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import type { TeamStats, PredictionResult } from '../types';
 import { generatePrediction } from '../services/geminiService';
@@ -23,7 +22,7 @@ const TeamStatsInput: React.FC<{
   };
 
   return (
-    <div className="w-full bg-slate-800/50 p-6 rounded-xl border border-slate-700 space-y-4">
+    <div className="w-full bg-slate-800/50 p-4 sm:p-6 rounded-xl border border-slate-700 space-y-4">
       <h3 className="text-xl font-semibold text-white">{teamLabel}</h3>
       <input
         type="text"
@@ -113,7 +112,7 @@ const PredictionView: React.FC = () => {
         <button
           onClick={handlePredict}
           disabled={isLoading}
-          className="bg-cyan-600 text-white font-bold py-3 px-8 rounded-full hover:bg-cyan-500 disabled:bg-slate-600 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-105 shadow-lg shadow-cyan-600/30 flex items-center justify-center gap-3 mx-auto"
+          className="bg-cyan-600 text-white font-bold py-3 px-6 sm:px-8 rounded-full hover:bg-cyan-500 disabled:bg-slate-600 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-105 shadow-lg shadow-cyan-600/30 flex items-center justify-center gap-3 mx-auto"
         >
           {isLoading ? (
             <>
@@ -135,18 +134,18 @@ const PredictionView: React.FC = () => {
       {error && <div className="text-center text-red-400 bg-red-900/50 p-4 rounded-lg">{error}</div>}
 
       {prediction && (
-        <div className="bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 p-8 rounded-2xl shadow-2xl animate-fade-in-up mt-8">
-            <h2 className="text-3xl font-bold text-center text-white mb-2">Match Prediction</h2>
-            <p className="text-center text-cyan-400 font-semibold text-lg">{teamA.name} vs {teamB.name}</p>
+        <div className="bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 p-4 sm:p-8 rounded-2xl shadow-2xl animate-fade-in-up mt-8">
+            <h2 className="text-2xl sm:text-3xl font-bold text-center text-white mb-2">Match Prediction</h2>
+            <p className="text-center text-cyan-400 font-semibold text-base sm:text-lg">{teamA.name} vs {teamB.name}</p>
             
             <div className="mt-6 grid md:grid-cols-2 gap-6 text-center">
-                <div className="bg-slate-700/50 p-6 rounded-lg">
+                <div className="bg-slate-700/50 p-4 sm:p-6 rounded-lg">
                     <h4 className="text-md font-semibold text-gray-400 uppercase tracking-wider">Predicted Winner</h4>
-                    <p className="text-4xl font-bold text-cyan-400 mt-2">{prediction.predictedWinner}</p>
+                    <p className="text-3xl sm:text-4xl font-bold text-cyan-400 mt-2">{prediction.predictedWinner}</p>
                 </div>
-                 <div className="bg-slate-700/50 p-6 rounded-lg">
+                 <div className="bg-slate-700/50 p-4 sm:p-6 rounded-lg">
                     <h4 className="text-md font-semibold text-gray-400 uppercase tracking-wider">Predicted Score</h4>
-                    <p className="text-4xl font-bold text-white mt-2">{prediction.predictedScore}</p>
+                    <p className="text-3xl sm:text-4xl font-bold text-white mt-2">{prediction.predictedScore}</p>
                 </div>
             </div>
 
